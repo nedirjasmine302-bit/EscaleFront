@@ -1,0 +1,69 @@
+<!-- Section: Contact -->
+<section class="contact-page">
+
+  <div class="contact-header">
+    <p class="eyebrow fade-up">Parlons de votre voyage</p>
+    <h2 class="scale-in delay-1">Contactez l'agence</h2>
+    <p class="fade-up delay-2">
+      Une question, une envie d'ailleurs ou l'envie de prendre rendez-vous ? Écrivez-nous, un conseiller vous répond rapidement.
+    </p>
+  </div>
+
+  <div class="contact-layout">
+
+    <aside class="contact-info fade-up delay-2">
+      <h3>Escale, votre agence de voyage</h3>
+      <p>Des conseillers passionnés à votre écoute pour composer un séjour à votre image.</p>
+
+      <ul class="contact-details">
+        <li><i class="bi bi-geo-alt-fill"></i> 12 rue des Alizés, 75000 Paris</li>
+        <li><i class="bi bi-telephone-fill"></i> 01 23 45 67 89</li>
+        <li><i class="bi bi-envelope-fill"></i> bonjour@escale.fr</li>
+        <li><i class="bi bi-clock-fill"></i> Du lundi au samedi, 9h - 19h</li>
+      </ul>
+    </aside>
+
+    <form class="contact-form fade-up delay-3" id="contact-form" novalidate>
+      <div class="field">
+        <label for="type">Votre demande</label>
+        <div class="select" id="type">
+          <button type="button" class="select-trigger">
+            <span class="select-label is-placeholder" data-value="">Sélectionner</span>
+            <i class="bi bi-chevron-down select-caret"></i>
+          </button>
+          <ul class="select-options">
+            <li class="select-option is-selected" data-value="">Sélectionner</li>
+            <li class="select-option" data-value="contact">Une question / un renseignement</li>
+            <li class="select-option" data-value="rendez-vous">Prendre rendez-vous</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="name">Nom</label>
+        <input type="text" id="name" placeholder="Votre nom">
+      </div>
+
+      <div class="field">
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="vous@email.fr">
+      </div>
+
+      <div class="field">
+        <label for="phone">Téléphone <span class="field-optional">(facultatif)</span></label>
+        <input type="tel" id="phone" placeholder="06 12 34 56 78">
+      </div>
+
+      <div class="field">
+        <label for="message">Message</label>
+        <textarea id="message" placeholder="Décrivez votre projet de voyage..."></textarea>
+      </div>
+
+      <p class="form-feedback" id="contact-feedback"></p>
+
+      <div class="form-actions">
+        <button type="submit" class="btn btn-primary" id="contact-submit">Envoyer ma demande</button>
+      </div>
+    </form>
+  </div>
+</section>
