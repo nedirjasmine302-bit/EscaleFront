@@ -1,0 +1,175 @@
+@use "../abstracts/all" as abs;
+
+
+.main {
+  background-color: abs.$sand;
+  min-height: 70vh;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.1rem 2.5rem;
+  background-color: rgba(abs.$sand, 0.72);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid abs.$line;
+
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.logo,
+.logo a {
+  @include abs.logo-style(1.9rem);
+}
+
+.navbar .logo {
+  margin: 0;
+  padding: 0.5rem 0 0.5rem 0.2rem;
+  line-height: 1;
+}
+
+.menu {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 2rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu a {
+  position: relative;
+  text-decoration: none;
+  @include abs.text-style(0.95rem, abs.$font-family-sans-serif, abs.$text);
+  font-weight: 500;
+  @include abs.anim-transition(color);
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -0.4rem;
+    width: 0;
+    height: 2px;
+    background: abs.$secondary;
+    @include abs.anim-transition(width);
+  }
+
+  &:hover {
+    color: abs.$primary;
+  }
+
+  &:hover::after {
+    width: 100%;
+  }
+}
+
+.burger {
+  display: none;
+  background: none;
+  border: none;
+  color: abs.$text;
+  font-size: 2rem;
+  cursor: pointer;
+  padding: 0.3rem;
+  @include abs.anim-transition(transform);
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+
+// Responsive
+@media (max-width: 1024px) {
+  .burger {
+    display: block;
+    margin-left: auto;
+  }
+
+  .navbar {
+    gap: 0;
+    flex-wrap: wrap;
+    transition: gap 1s ease;
+  }
+
+  .navbar.menu-open {
+    gap: 1rem;
+  }
+
+  .menu {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    width: 100%;
+    text-align: left;
+
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
+    transform: translateY(-10px);
+
+    transition:
+      max-height 0.7s ease,
+      opacity 0.3s ease,
+      transform 0.3s ease;
+
+    li {
+      opacity: 0;
+      animation-fill-mode: forwards;
+    }
+  }
+
+  // Ouverture du menu
+  .menu.show {
+    display: flex;
+    opacity: 1;
+    pointer-events: auto;
+    visibility: visible;
+    transform: translateY(0);
+
+    max-height: 260px;
+    padding: 0.5rem 0 1rem 0;
+
+    li {
+      animation: fadeInUp 0.7s forwards;
+      opacity: 1;
+    }
+
+    li:nth-child(1) { animation-delay: 0.05s; }
+    li:nth-child(2) { animation-delay: 0.10s; }
+    li:nth-child(3) { animation-delay: 0.15s; }
+  }
+
+  // Fermeture du menu
+  .menu.closing {
+    display: flex;
+    opacity: 1;
+    pointer-events: none;
+    visibility: visible;
+    max-height: 0;
+  }
+
+  .menu.closing li {
+    animation: fadeOutDown 0.25s forwards;
+    opacity: 1;
+  }
+
+  // Animations
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeOutDown {
+    from { opacity: 1; transform: translateY(0); }
+    to   { opacity: 0; transform: translateY(10px); }
+  }
+}

@@ -1,0 +1,14 @@
+# Configuration Netlify pour le déploiement du site vitrine Escale.
+
+[build]
+  # Compile le SCSS en CSS avant publication (Netlify lance npm install automatiquement avant).
+  command = "npm run build"
+  # Dossier publié = la racine du projet (index.html, assets/, pages/, Router/).
+  publish = "."
+
+# Routage SPA : toute URL inconnue sert index.html pour que le Router maison prenne le relais.
+# (Netlify sert d'abord les vrais fichiers existants — pages/, assets/ — et ne bascule ici qu'en dernier recours.)
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

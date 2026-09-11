@@ -1,0 +1,20 @@
+@use "../abstracts/all" as abs;
+
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2.5rem 1rem;
+  background-color: abs.$sand-2;
+  border-top: 1px solid abs.$line;
+
+  p {
+    @include abs.text-style(0.9rem, abs.$font-family-sans-serif, abs.$muted);
+  }
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+}

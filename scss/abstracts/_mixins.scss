@@ -1,0 +1,63 @@
+@use "../abstracts/variables" as var;
+
+
+// Pour les animations et transitions
+@mixin anim-transition($props: all, $time: .3s, $ease: ease) {
+  transition: $props $time $ease;
+}
+
+// Pour les ::before et ::after
+@mixin pseudo-base($z: null) {
+  content: "";
+  position: absolute;
+  @if $z != null { z-index: $z; }
+}
+
+// Pour le logo
+@mixin logo-style($size) {
+  font-size: $size;
+  font-weight: 700;
+  letter-spacing: 0.02rem;
+  font-family: var.$font-family-serif;
+  text-decoration: none;
+
+  background: linear-gradient(90deg, var.$primary, var.$secondary);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+//Pour les textes
+@mixin text-style(
+  $size: 1.05rem,
+  $family: var.$font-family-sans-serif,
+  $color: var.$text,
+  $align: center,
+) {
+  font-family: $family;
+  font-size: $size;
+  color: $color;
+  text-align: $align;
+}
+
+//Pour les titres
+@mixin title-style(
+  $size: 2rem,
+  $color: var.$text,
+  $align: center,
+  $family: var.$font-family-serif,
+  $weight: 600
+) {
+  font-family: $family;
+  font-size: $size;
+  font-weight: $weight;
+  color: $color;
+  text-align: $align;
+}
+
+//Pour les éléments qui sont désactivés
+@mixin state-disabled() {
+  opacity: 0.35;
+  pointer-events: none;
+  filter: grayscale(40%);
+}

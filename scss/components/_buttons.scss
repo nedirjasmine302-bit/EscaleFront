@@ -1,0 +1,121 @@
+@use "../abstracts/all" as abs;
+
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 14.5rem;
+  height: 2.9rem;
+  border: 0;
+  border-radius: 2rem;
+  text-decoration: none;
+  color: white !important;
+  white-space: nowrap;
+  font-weight: 600;
+  box-shadow: 0 8px 18px rgba(abs.$dark, 0.16);
+  transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px rgba(abs.$dark, 0.22);
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 0.2rem rgba(abs.$secondary, 0.5), 0 8px 18px rgba(abs.$dark, 0.16);
+  }
+}
+
+
+.btn-primary {
+  background: linear-gradient(135deg, abs.$primary, abs.$primary-dark) !important;
+
+  &:active,
+  &:focus {
+    background: linear-gradient(135deg, abs.$primary, abs.$primary-dark) !important;
+  }
+}
+
+.btn-secondary {
+  background-color: abs.$secondary !important;
+
+  &:hover {
+    background-color: darken(abs.$secondary, 5%) !important;
+  }
+
+  &:active,
+  &:focus {
+    background-color: abs.$secondary !important;
+  }
+}
+
+.btn-ghost {
+  background-color: rgba(255, 255, 255, 0.06) !important;
+  color: abs.$text !important;
+  border: 1px solid abs.$line !important;
+  box-shadow: none;
+  backdrop-filter: blur(4px);
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.12) !important;
+    border-color: abs.$primary !important;
+    color: abs.$primary !important;
+  }
+
+  &:active,
+  &:focus {
+    background-color: rgba(255, 255, 255, 0.12) !important;
+    border-color: abs.$primary !important;
+  }
+}
+
+.btn-danger {
+  background: linear-gradient(135deg, abs.$danger, darken(abs.$danger, 8%)) !important;
+
+  &:active,
+  &:focus {
+    background: linear-gradient(135deg, abs.$danger, darken(abs.$danger, 8%)) !important;
+  }
+}
+
+.btn-sm {
+  width: auto;
+  height: auto;
+  padding: 0.5rem 0.95rem;
+  font-size: 0.85rem;
+  border-radius: 1.4rem;
+  box-shadow: none;
+
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 14px rgba(abs.$dark, 0.16);
+  }
+}
+
+.btn-interest {
+  width: 100%;
+  height: auto;
+  margin-top: 1.1rem;
+  padding: 0.7rem 1rem;
+  background: rgba(abs.$secondary, 0.12) !important;
+  color: abs.$secondary !important;
+  border: 1px solid rgba(abs.$secondary, 0.4) !important;
+  box-shadow: none;
+  font-weight: 600;
+
+  &:hover {
+    background: abs.$secondary !important;
+    color: white !important;
+    border-color: abs.$secondary !important;
+  }
+}
+
+.btn-disabled {
+  @include abs.state-disabled();
+}

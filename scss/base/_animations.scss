@@ -1,0 +1,49 @@
+@use "../abstracts/all" as abs;
+
+
+// Animations des pages
+%base-animation {
+  opacity: 0;
+  @include abs.anim-transition(); // all + .3s + ease
+}
+
+.fade-up {
+  @extend %base-animation;
+  transform: translateY(25px);
+  @include abs.anim-transition($time: .8s);
+}
+
+.fade-up.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.scale-in {
+  @extend %base-animation;
+  transform: scale(0.85);
+  @include abs.anim-transition($time: .9s);
+}
+
+.scale-in.show {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.blur-in {
+  @extend %base-animation;
+  filter: blur(6px);
+  @include abs.anim-transition($time: 1s);
+}
+
+.blur-in.show {
+  opacity: 1;
+  filter: blur(0);
+}
+
+
+// Appartitions des animations
+@for $i from 1 through 10 {
+  .delay-#{$i} {
+    transition-delay: #{$i * 0.1}s;
+  }
+}

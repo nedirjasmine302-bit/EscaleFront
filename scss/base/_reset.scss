@@ -1,0 +1,65 @@
+@use "../abstracts/variables" as var;
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var.$primary var.$sand-2;
+}
+
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  background: var.$sand-2;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: linear-gradient(var.$primary, var.$primary-dark);
+  border-radius: 10px;
+  border: 2px solid var.$sand-2;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: var.$primary;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+input::-ms-reveal,
+input::-ms-clear {
+  filter: invert(1);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+body {
+  background: var.$sand;
+  color: var.$text;
+  font-family: var.$font-family-sans-serif;
+
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main {
+  flex: 1 0 auto;
+}
+
+body.no-scroll {
+  overflow: hidden;
+}
