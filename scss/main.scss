@@ -17,6 +17,10 @@
 // Components
 @use "components/buttons";
 @use "components/hero";
+@use "components/cards";
+@use "components/forms";
+@use "components/modal";
 
 // Pages
 @use "pages/home";
+@use "pages/destinations";

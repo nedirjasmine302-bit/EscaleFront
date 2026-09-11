@@ -1,0 +1,146 @@
+@use "../abstracts/all" as abs;
+
+
+.dialog-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background: rgba(abs.$dark, 0.55);
+  backdrop-filter: blur(3px);
+  opacity: 0;
+  @include abs.anim-transition($props: opacity, $time: 0.25s);
+
+  &.show {
+    opacity: 1;
+  }
+}
+
+
+#interest-modal,
+#confirm-dialog,
+#password-dialog {
+  display: none;
+  opacity: 1;
+}
+
+
+.dialog {
+  width: 100%;
+  max-width: 28rem;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  background: abs.$surface;
+  border-radius: 1.2rem;
+  padding: 2rem 1.8rem 1.8rem 1.8rem;
+  box-shadow: 0 24px 60px rgba(abs.$dark, 0.35);
+}
+
+.dialog-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 2.2rem;
+  height: 2.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  color: abs.$muted;
+  cursor: pointer;
+  @include abs.anim-transition(background-color);
+
+  &:hover {
+    background: rgba(abs.$danger, 0.18);
+    color: abs.$danger;
+  }
+}
+
+.dialog-identity {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.7rem 0.9rem;
+  border-radius: 0.6rem;
+  background: abs.$surface-2;
+  border: 1px solid abs.$line;
+  @include abs.text-style(0.92rem, abs.$font-family-sans-serif, abs.$text, left);
+
+  i {
+    color: abs.$primary;
+  }
+}
+
+.dialog-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.3rem 0.9rem;
+  border-radius: 1rem;
+  background: rgba(abs.$secondary, 0.12);
+  @include abs.text-style(0.8rem, abs.$font-family-sans-serif, abs.$secondary);
+  font-weight: 600;
+  margin-bottom: 0.8rem;
+}
+
+.dialog-title {
+  @include abs.title-style(1.5rem, abs.$text, left);
+  margin-bottom: 0.4rem;
+}
+
+.dialog-destinations {
+  @include abs.text-style(0.9rem, abs.$font-family-sans-serif, abs.$primary, left);
+  font-weight: 600;
+  margin-bottom: 0.8rem;
+}
+
+.dialog-intro {
+  @include abs.text-style(0.92rem, abs.$font-family-sans-serif, abs.$muted, left);
+  line-height: 1.5;
+  margin-bottom: 1.4rem;
+}
+
+.dialog-feedback {
+  margin-top: 0.4rem;
+  @include abs.text-style(0.9rem, abs.$font-family-sans-serif, abs.$text, center);
+
+  &:empty {
+    display: none;
+  }
+
+  &.is-success {
+    color: darken(abs.$success, 8%);
+  }
+
+  &.is-error {
+    color: abs.$danger;
+  }
+}
+
+.dialog .form-actions .btn {
+  width: 100%;
+}
+
+.dialog-sm {
+  max-width: 24rem;
+  max-height: none;
+  overflow: visible;
+}
+
+.dialog-actions {
+  display: flex;
+  gap: 0.8rem;
+  margin-top: 1.4rem;
+
+  .btn {
+    width: auto;
+    flex: 1;
+    padding: 0 1rem;
+  }
+}
