@@ -1,0 +1,68 @@
+<!-- Section: Favorites -->
+<section class="destinations-page">
+
+  <div class="destinations-header">
+    <p class="eyebrow fade-up">Votre sélection</p>
+    <h2 class="scale-in delay-1">Mes favoris</h2>
+    <p class="fade-up delay-2">
+      Retrouvez ici les destinations que vous avez mises de côté.
+    </p>
+  </div>
+
+  <!-- Section: Filters -->
+  <div class="destination-filters" id="destination-filters"></div>
+
+  <p class="list-state" id="list-state">Chargement de vos favoris...</p>
+
+  <!-- Section: Results -->
+  <div class="destination-grid" id="favorites-list"></div>
+
+  <!-- Section: Selection bar -->
+  <div class="selection-bar" id="selection-bar" hidden>
+    <span class="selection-count" id="selection-count">0 destination sélectionnée</span>
+    <div class="selection-actions">
+      <button type="button" class="btn btn-sm btn-ghost" id="clear-selection">Effacer</button>
+      <button type="button" class="btn btn-sm btn-primary" id="send-selection">Faire une demande groupée</button>
+    </div>
+  </div>
+
+  <!-- Section: Pop up interest -->
+  <div class="dialog-overlay" id="interest-modal">
+    <div class="dialog" role="dialog" aria-modal="true">
+      <button type="button" class="dialog-close" aria-label="Fermer"><i class="bi bi-x-lg"></i></button>
+      <p class="dialog-eyebrow"><i class="bi bi-envelope-heart"></i> Demande d'information</p>
+      <h3 class="dialog-title" id="interest-title"></h3>
+      <p class="dialog-destinations" id="interest-destinations" hidden></p>
+      <p class="dialog-intro" id="interest-intro"></p>
+
+      <form class="dialog-form" novalidate>
+        <div class="field">
+          <label for="interest-name">Nom</label>
+          <input type="text" id="interest-name" placeholder="Votre nom">
+          <p class="field-error" id="interest-name-error"></p>
+        </div>
+        <div class="field">
+          <label for="interest-email">Email</label>
+          <input type="email" id="interest-email" placeholder="vous@email.fr">
+          <p class="field-error" id="interest-email-error"></p>
+        </div>
+        <div class="field">
+          <label for="interest-phone">Téléphone <span class="field-optional">(facultatif)</span></label>
+          <input type="tel" id="interest-phone" placeholder="06 12 34 56 78">
+          <p class="field-error" id="interest-phone-error"></p>
+        </div>
+        <div class="field">
+          <label for="interest-message">Message</label>
+          <textarea id="interest-message" placeholder="Vos envies, vos dates..."></textarea>
+          <p class="field-error" id="interest-message-error"></p>
+        </div>
+
+        <p class="dialog-feedback" id="interest-feedback"></p>
+
+        <div class="form-actions">
+          <button type="submit" id="interest-submit" class="btn btn-primary">Envoyer ma demande</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
