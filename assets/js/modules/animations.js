@@ -1,8 +1,13 @@
+// Décide si un élément observé doit apparaître
+export function shouldReveal(entry) {
+  return entry.isIntersecting;
+}
+
 // Animation d'apparition des éléments de la page au scroll
 export function initReveal() {
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
-      if (entry.isIntersecting) entry.target.classList.add("show");
+      if (shouldReveal(entry)) entry.target.classList.add("show");
     });
   });
 
