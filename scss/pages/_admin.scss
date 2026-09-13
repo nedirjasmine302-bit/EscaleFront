@@ -1,0 +1,380 @@
+@use "../abstracts/all" as abs;
+
+
+// Section: Navigation
+.admin-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  justify-content: center;
+  margin-bottom: 2.5rem;
+}
+
+.admin-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.6rem 1.2rem;
+  border: 1px solid abs.$line;
+  border-radius: 2rem;
+  background: abs.$surface;
+  color: abs.$muted;
+  font-family: abs.$font-family-sans-serif;
+  font-weight: 600;
+  font-size: 0.92rem;
+  cursor: pointer;
+  @include abs.anim-transition();
+
+  &:hover {
+    color: abs.$primary;
+    border-color: rgba(abs.$primary, 0.5);
+  }
+
+  &.is-active {
+    background: linear-gradient(135deg, abs.$primary, abs.$primary-dark);
+    border-color: transparent;
+    color: white;
+    box-shadow: 0 8px 18px rgba(abs.$primary-dark, 0.28);
+  }
+}
+
+
+// Section: Filters
+.admin-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: 1.4rem;
+
+  &:empty {
+    display: none;
+  }
+}
+
+
+// Section: Requests
+.admin-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(19rem, 1fr));
+  gap: 1.3rem;
+}
+
+.request-card {
+  background: abs.$surface;
+  border: 1px solid abs.$line;
+  border-left: 4px solid abs.$primary;
+  border-radius: 0.9rem;
+  padding: 1.3rem 1.4rem;
+  box-shadow: 0 8px 20px rgba(abs.$dark, 0.07);
+  @include abs.anim-transition(transform);
+
+  &:hover {
+    transform: translateY(-3px);
+  }
+
+  &.card-interet { border-left-color: abs.$secondary; }
+  &.card-rendez-vous { border-left-color: abs.$primary; }
+  &.card-contact { border-left-color: abs.$warning; }
+
+  &.is-done {
+    opacity: 0.72;
+    border-left-color: abs.$success;
+  }
+
+  .request-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.7rem;
+  }
+
+  .request-type {
+    @include abs.text-style(0.8rem, abs.$font-family-sans-serif, abs.$primary-dark, left);
+    font-weight: 600;
+  }
+
+  .request-type-interet { color: abs.$secondary; }
+  .request-type-rendez-vous { color: abs.$primary; }
+  .request-type-contact { color: abs.$warning; }
+
+  .request-status {
+    padding: 0.2rem 0.7rem;
+    border-radius: 1rem;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.03rem;
+
+    &.new {
+      background: rgba(abs.$secondary, 0.15);
+      color: abs.$secondary;
+    }
+
+    &.done {
+      background: rgba(abs.$success, 0.15);
+      color: darken(abs.$success, 8%);
+    }
+  }
+
+  .request-name {
+    @include abs.title-style(1.15rem, abs.$text, left);
+    margin-bottom: 0.6rem;
+  }
+
+  .request-contact {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 1rem;
+    margin-bottom: 0.7rem;
+
+    span {
+      @include abs.text-style(0.82rem, abs.$font-family-sans-serif, abs.$muted, left);
+
+      i {
+        color: abs.$primary;
+        margin-right: 0.25rem;
+      }
+    }
+  }
+
+  .request-message {
+    @include abs.text-style(0.9rem, abs.$font-family-sans-serif, abs.$text, left);
+    line-height: 1.5;
+    background: abs.$sand;
+    border-radius: 0.6rem;
+    padding: 0.7rem 0.9rem;
+    margin-bottom: 1rem;
+  }
+
+  .request-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+
+    .btn {
+      color: abs.$primary !important;
+      background: rgba(abs.$primary, 0.1) !important;
+
+      &.btn-danger {
+        color: white !important;
+        background: linear-gradient(135deg, abs.$danger, darken(abs.$danger, 8%)) !important;
+      }
+    }
+  }
+}
+
+
+// Section: Tables
+.admin-table {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.admin-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  background: abs.$surface;
+  border: 1px solid abs.$line;
+  border-radius: 0.8rem;
+  padding: 0.9rem 1.2rem;
+  box-shadow: 0 5px 14px rgba(abs.$dark, 0.06);
+
+  .admin-row-info {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .admin-row-name {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    font-weight: 600;
+    color: abs.$text;
+    font-family: abs.$font-family-serif;
+  }
+
+  .admin-row-meta {
+    display: block;
+    margin-top: 0.15rem;
+    overflow-wrap: anywhere;
+    @include abs.text-style(0.83rem, abs.$font-family-sans-serif, abs.$muted, left);
+  }
+
+  .admin-row-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-shrink: 0;
+  }
+}
+
+
+// Section: Role chip
+.role-chip {
+  padding: 0.15rem 0.6rem;
+  border-radius: 1rem;
+  font-family: abs.$font-family-sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02rem;
+
+  &.role-staff {
+    background: rgba(abs.$primary, 0.14);
+    color: abs.$primary-dark;
+  }
+
+  &.role-admin {
+    background: rgba(abs.$secondary, 0.16);
+    color: abs.$secondary;
+  }
+
+  &.role-suspended {
+    background: rgba(abs.$danger, 0.16);
+    color: abs.$danger;
+  }
+}
+
+.admin-row.is-suspended {
+  opacity: 0.6;
+}
+
+.admin-badge {
+  padding: 0.3rem 0.8rem;
+  border-radius: 1rem;
+  background: rgba(abs.$secondary, 0.14);
+  @include abs.text-style(0.78rem, abs.$font-family-sans-serif, abs.$secondary);
+  font-weight: 700;
+}
+
+
+// Section: Statistics
+.stats-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.4rem;
+}
+
+.stats-caption {
+  @include abs.text-style(0.95rem, abs.$font-family-sans-serif, abs.$muted, left);
+  font-weight: 600;
+
+  i {
+    color: abs.$primary;
+    margin-right: 0.3rem;
+  }
+}
+
+.stats-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.stat-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: abs.$surface;
+  border: 1px solid abs.$line;
+  border-radius: 0.8rem;
+  padding: 0.9rem 1.2rem;
+  box-shadow: 0 5px 14px rgba(abs.$dark, 0.06);
+}
+
+.stat-rank {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 2.1rem;
+  height: 2.1rem;
+  border-radius: 50%;
+  font-family: abs.$font-family-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: abs.$muted;
+  background: rgba(abs.$muted, 0.14);
+
+  &.rank-1 { color: #3a2c00; background: linear-gradient(135deg, #F6D06B, #E0A93B); }
+  &.rank-2 { color: #2b2f33; background: linear-gradient(135deg, #DDE3EA, #B7C0CC); }
+  &.rank-3 { color: #3a2213; background: linear-gradient(135deg, #E7A977, #C87E4E); }
+}
+
+.stat-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.stat-name {
+  display: block;
+  font-family: abs.$font-family-serif;
+  font-weight: 600;
+  color: abs.$text;
+}
+
+.stat-country {
+  display: block;
+  margin-bottom: 0.4rem;
+  @include abs.text-style(0.8rem, abs.$font-family-sans-serif, abs.$muted, left);
+}
+
+.stat-bar {
+  height: 0.4rem;
+  border-radius: 1rem;
+  background: rgba(abs.$primary, 0.12);
+  overflow: hidden;
+
+  span {
+    display: block;
+    height: 100%;
+    border-radius: 1rem;
+    background: linear-gradient(90deg, abs.$primary, abs.$secondary);
+  }
+}
+
+.stat-views {
+  flex-shrink: 0;
+  @include abs.text-style(0.82rem, abs.$font-family-sans-serif, abs.$muted, right);
+
+  strong {
+    display: block;
+    font-family: abs.$font-family-serif;
+    font-size: 1.15rem;
+    color: abs.$primary;
+  }
+}
+
+
+// Responsive
+@media (max-width: 560px) {
+  .admin-row {
+    flex-direction: column;
+    align-items: stretch;
+
+    .admin-row-actions {
+      flex-wrap: wrap;
+    }
+  }
+
+  .stat-row {
+    gap: 0.7rem;
+  }
+
+  .stats-head {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .stats-caption {
+    text-align: center;
+  }
+}
