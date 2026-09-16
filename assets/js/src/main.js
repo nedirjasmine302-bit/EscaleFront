@@ -47,15 +47,17 @@ function renderAuthNav() {
   if (!menu) return;
 
   if (isLoggedIn()) {
+    const contact = document.getElementById("nav-contact");
+
+    const favorites = document.createElement("li");
+    favorites.innerHTML = `<a href="/favorites">Favoris</a>`;
+    menu.insertBefore(favorites, contact);
+
     if (isEmployee()) {
       const gestion = document.createElement("li");
       gestion.innerHTML = `<a href="/management">Gestion</a>`;
-      menu.appendChild(gestion);
+      menu.insertBefore(gestion, contact);
     }
-
-    const favorites = document.createElement("li");
-    favorites.innerHTML = `<a href="/favorites">Mes favoris</a>`;
-    menu.appendChild(favorites);
 
     const logout = document.createElement("li");
     logout.innerHTML = `<a href="#" class="logout">Déconnexion</a>`;
