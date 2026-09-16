@@ -23,8 +23,8 @@ export function imageForDestination(destination) {
   if (destination.image) {
     return destination.image.startsWith("data:") ? destination.image : `${API_BASE}/${destination.image}`;
   }
-  const file = destination.name.replace(/-/g, " ");
-  return "/assets/images/" + encodeURIComponent(file) + ".jpg";
+  const file = destination.name.replace(/ /g, "-");
+  return "/assets/images/" + encodeURIComponent(file) + ".webp";
 }
 
 
