@@ -1,0 +1,221 @@
+<!-- Section: Management -->
+<section class="gestion-page">
+
+  <div class="gestion-header">
+    <span class="gestion-eyebrow scale-in"><i class="bi bi-sliders"></i> Espace de gestion</span>
+    <h2 class="gestion-title fade-up delay-1">Tableau de bord</h2>
+    <p class="gestion-intro fade-up delay-2">
+      Gérez le catalogue, les demandes des voyageurs et les comptes.
+    </p>
+  </div>
+
+  <!-- Section: Navigation -->
+  <div class="admin-tabs fade-up delay-2" id="admin-tabs">
+    <button class="admin-tab is-active" data-tab="destinations"><i class="bi bi-geo-alt"></i> Destinations</button>
+    <button class="admin-tab" data-tab="requests"><i class="bi bi-envelope-paper"></i> Demandes</button>
+    <button class="admin-tab" data-tab="members"><i class="bi bi-people"></i> Membres</button>
+    <button class="admin-tab admin-only" data-tab="staff" hidden><i class="bi bi-person-badge"></i> Employés</button>
+    <button class="admin-tab admin-only" data-tab="stats" hidden><i class="bi bi-bar-chart-line"></i> Statistiques</button>
+  </div>
+
+
+  <!-- Section: Destinations -->
+  <div class="admin-panel" data-panel="destinations">
+    <div class="gestion-layout">
+
+      <form class="gestion-form" id="destination-form" novalidate>
+        <h3 id="form-title">Ajouter une destination</h3>
+
+        <div class="field">
+          <label for="image">Image de la destination</label>
+          <label class="upload-zone" id="upload-zone">
+            <input type="file" id="image" accept="image/jpeg,image/png,image/webp" hidden>
+            <div class="upload-empty" id="upload-empty">
+              <i class="bi bi-cloud-arrow-up"></i>
+              <span>Cliquez pour choisir une image</span>
+              <small>JPEG, PNG ou WebP · 3 Mo max</small>
+            </div>
+            <img class="upload-preview" id="upload-preview" alt="Aperçu" hidden>
+          </label>
+          <p class="field-error" id="image-error"></p>
+          <p class="image-hint" id="image-hint" hidden></p>
+        </div>
+
+        <div class="field">
+          <label for="name">Nom</label>
+          <input type="text" id="name" placeholder="Nom du lieu">
+          <p class="field-error" id="name-error"></p>
+        </div>
+
+        <div class="field">
+          <label for="country">Pays</label>
+          <input type="text" id="country" placeholder="Pays">
+          <p class="field-error" id="country-error"></p>
+        </div>
+
+        <div class="field">
+          <label for="type">Type de voyage</label>
+          <div class="select" id="type">
+            <button type="button" class="select-trigger">
+              <span class="select-label is-placeholder" data-value="">Sélectionner</span>
+              <i class="bi bi-chevron-down select-caret"></i>
+            </button>
+            <ul class="select-options">
+              <li class="select-option is-selected" data-value="">Sélectionner</li>
+              <li class="select-option" data-value="plage">Plage</li>
+              <li class="select-option" data-value="ville">Ville</li>
+              <li class="select-option" data-value="montagne">Montagne</li>
+              <li class="select-option" data-value="nature">Nature</li>
+            </ul>
+          </div>
+          <p class="field-error" id="type-error"></p>
+        </div>
+
+        <div class="field">
+          <label for="category">Continent</label>
+          <div class="select" id="category">
+            <button type="button" class="select-trigger">
+              <span class="select-label is-placeholder" data-value="">Sélectionner</span>
+              <i class="bi bi-chevron-down select-caret"></i>
+            </button>
+            <ul class="select-options">
+              <li class="select-option is-selected" data-value="">Sélectionner</li>
+            </ul>
+          </div>
+          <p class="field-error" id="category-error"></p>
+        </div>
+
+        <div class="field">
+          <label for="description">Description</label>
+          <textarea id="description" placeholder="Quelques mots sur la destination"></textarea>
+          <p class="field-error" id="description-error"></p>
+        </div>
+
+        <p class="form-feedback" id="destination-feedback"></p>
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary" id="submit-btn">Ajouter</button>
+          <button type="button" class="btn btn-ghost" id="cancel-btn" hidden>Annuler</button>
+        </div>
+      </form>
+
+      <div class="gestion-list-wrapper">
+        <div class="admin-filters" id="destinations-filters"></div>
+        <p class="list-state" id="list-state">Chargement...</p>
+        <div class="gestion-list" id="gestion-list"></div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Section: Requests -->
+  <div class="admin-panel" data-panel="requests" hidden>
+    <div class="admin-filters" id="requests-filters"></div>
+    <p class="list-state" id="requests-state">Chargement des demandes...</p>
+    <div class="admin-cards" id="requests-list"></div>
+  </div>
+
+
+  <!-- Section: Members -->
+  <div class="admin-panel" data-panel="members" hidden>
+    <div class="admin-filters" id="members-filters"></div>
+    <p class="list-state" id="members-state">Chargement des membres...</p>
+    <div class="admin-table-wrapper">
+      <div class="admin-table" id="members-list"></div>
+    </div>
+  </div>
+
+
+  <!-- Section: Employees -->
+  <div class="admin-panel" data-panel="staff" hidden>
+    <div class="gestion-layout">
+
+      <form class="gestion-form" id="staff-form" novalidate>
+        <h3>Créer un compte employé</h3>
+
+        <div class="field">
+          <label for="staff-pseudo">Pseudo</label>
+          <input type="text" id="staff-pseudo" placeholder="Pseudo de l'employé">
+          <p class="field-error" id="staff-pseudo-error"></p>
+        </div>
+
+        <div class="field">
+          <label for="staff-email">Email</label>
+          <input type="email" id="staff-email" placeholder="employe@escale.fr">
+          <p class="field-error" id="staff-email-error"></p>
+        </div>
+
+        <div class="field">
+          <label for="staff-password">Mot de passe</label>
+          <input type="password" id="staff-password" placeholder="Mot de passe de l'employé">
+          <p class="field-error" id="staff-password-error"></p>
+        </div>
+
+        <p class="form-feedback" id="staff-feedback"></p>
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary" id="staff-submit">Créer l'employé</button>
+        </div>
+      </form>
+
+      <div class="gestion-list-wrapper">
+        <div class="admin-filters" id="staff-filters"></div>
+        <p class="list-state" id="staff-state">Chargement des employés...</p>
+        <div class="admin-table" id="staff-list"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section: Statistics -->
+  <div class="admin-panel" data-panel="stats" hidden>
+    <div class="stats-head">
+      <p class="stats-caption"><i class="bi bi-heart"></i> Destinations les plus demandées par les voyageurs</p>
+      <button type="button" class="btn btn-sm btn-ghost" id="stats-refresh"><i class="bi bi-arrow-clockwise"></i> Actualiser</button>
+    </div>
+    <p class="list-state" id="stats-state">Chargement des statistiques...</p>
+    <div class="stats-list" id="stats-list"></div>
+  </div>
+
+
+  <!-- Section: Pop up confirmation -->
+  <div class="dialog-overlay" id="confirm-dialog">
+    <div class="dialog dialog-sm" role="dialog" aria-modal="true">
+      <p class="dialog-eyebrow"><i class="bi bi-exclamation-circle"></i> <span id="confirm-title"></span></p>
+      <p class="dialog-intro" id="confirm-message"></p>
+      <div class="form-actions dialog-actions">
+        <button type="button" class="btn btn-ghost" id="confirm-cancel"></button>
+        <button type="button" class="btn" id="confirm-accept"></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section: Pop up password -->
+  <div class="dialog-overlay" id="password-dialog">
+    <div class="dialog dialog-sm" role="dialog" aria-modal="true">
+      <p class="dialog-eyebrow"><i class="bi bi-key"></i> <span id="password-title">Nouveau mot de passe</span></p>
+      <p class="dialog-intro" id="password-message">Choisissez un mot de passe sécurisé.</p>
+      <form class="dialog-form" novalidate>
+        <div class="field">
+          <label for="dialog-email">Email de l'employé</label>
+          <input type="email" id="dialog-email" class="is-locked" readonly>
+        </div>
+        <div class="field">
+          <label for="dialog-password">Nouveau mot de passe</label>
+          <input type="password" id="dialog-password" placeholder="Nouveau mot de passe" autocomplete="new-password">
+          <p class="field-error" id="dialog-password-error"></p>
+        </div>
+        <div class="field">
+          <label for="dialog-password2">Confirmation du mot de passe</label>
+          <input type="password" id="dialog-password2" placeholder="Confirmez le mot de passe" autocomplete="new-password">
+          <p class="field-error" id="dialog-password2-error"></p>
+        </div>
+        <p class="dialog-feedback" id="dialog-feedback"></p>
+        <div class="form-actions dialog-actions">
+          <button type="button" class="btn btn-ghost" id="dialog-cancel">Annuler</button>
+          <button type="submit" class="btn btn-primary" id="dialog-submit">Valider</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+</section>

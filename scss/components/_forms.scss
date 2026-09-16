@@ -1,0 +1,177 @@
+@use "../abstracts/all" as abs;
+
+
+.field-error {
+  @include abs.text-style(0.75rem, abs.$font-family-sans-serif, abs.$danger, left);
+  line-height: 1.3;
+  margin: 0.3rem 0 0 0;
+
+  &:empty {
+    display: none;
+  }
+}
+
+
+.field-optional {
+  font-weight: 400;
+  color: abs.$muted;
+  font-size: 0.8rem;
+}
+
+input.is-locked,
+input.is-locked:focus {
+  opacity: 0.7;
+  cursor: not-allowed;
+  border-color: abs.$line;
+  outline: none;
+  box-shadow: none;
+  caret-color: transparent;
+  user-select: none;
+}
+
+
+.contact-form,
+.dialog-form {
+  .field {
+    margin-bottom: 1rem;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 0.35rem;
+    font-weight: 600;
+    @include abs.text-style(0.9rem, abs.$font-family-sans-serif, abs.$text, left);
+  }
+
+  input,
+  textarea {
+    width: 100%;
+    padding: 0.65rem 0.85rem;
+    border: 1px solid abs.$line;
+    border-radius: 0.6rem;
+    background: abs.$surface-2;
+    color: abs.$text;
+    font-family: abs.$font-family-sans-serif;
+    font-size: 1rem;
+    @include abs.anim-transition(border-color);
+
+    &:not(.is-locked):focus {
+      outline: none;
+      border-color: abs.$primary;
+    }
+  }
+
+  textarea {
+    min-height: 6rem;
+    resize: vertical;
+  }
+}
+
+
+.form-feedback {
+  margin-top: 0.6rem;
+  @include abs.text-style(0.9rem, abs.$font-family-sans-serif, abs.$text, center);
+
+  &:empty {
+    display: none;
+  }
+
+  &.is-success {
+    color: darken(abs.$success, 8%);
+  }
+
+  &.is-error {
+    color: abs.$danger;
+  }
+}
+
+
+.select {
+  position: relative;
+  width: 100%;
+  font-family: abs.$font-family-sans-serif;
+}
+
+.select-trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.65rem 0.9rem;
+  border: 1px solid abs.$line;
+  border-radius: 0.6rem;
+  background: abs.$surface-2;
+  color: abs.$text;
+  font-size: 1rem;
+  cursor: pointer;
+  @include abs.anim-transition(border-color);
+
+  &:hover {
+    border-color: rgba(abs.$primary, 0.6);
+  }
+
+  .select-label.is-placeholder {
+    color: abs.$muted;
+  }
+
+  .select-caret {
+    color: abs.$primary;
+    font-size: 0.85rem;
+    @include abs.anim-transition(transform);
+  }
+}
+
+.select.open .select-trigger {
+  border-color: abs.$primary;
+
+  .select-caret {
+    transform: rotate(180deg);
+  }
+}
+
+.select-options {
+  position: absolute;
+  top: calc(100% + 0.4rem);
+  left: 0;
+  right: 0;
+  z-index: 20;
+  margin: 0;
+  padding: 0.35rem;
+  list-style: none;
+  background: abs.$surface-2;
+  border: 1px solid abs.$line;
+  border-radius: 0.7rem;
+  box-shadow: 0 14px 30px rgba(abs.$dark, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-6px);
+  @include abs.anim-transition($props: opacity, $time: 0.18s);
+
+  max-height: 15rem;
+  overflow-y: auto;
+}
+
+.select.open .select-options {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.select-option {
+  padding: 0.55rem 0.7rem;
+  border-radius: 0.45rem;
+  color: abs.$text;
+  cursor: pointer;
+  @include abs.anim-transition(background-color);
+
+  &:hover {
+    background: rgba(abs.$primary, 0.08);
+  }
+
+  &.is-selected {
+    background: rgba(abs.$primary, 0.14);
+    color: abs.$primary-dark;
+    font-weight: 600;
+  }
+}

@@ -1,0 +1,163 @@
+@use "../abstracts/all" as abs;
+
+
+.destination-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(17.5rem, 1fr));
+  gap: 2rem;
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.destination-card {
+  background: abs.$surface;
+  border: 1px solid abs.$line;
+  border-radius: 1.2rem;
+  overflow: hidden;
+  box-shadow: 0 14px 34px rgba(abs.$dark, 0.5);
+  @include abs.anim-transition(transform);
+
+  &:hover {
+    transform: translateY(-8px);
+    border-color: rgba(abs.$primary, 0.45);
+    box-shadow: 0 22px 44px rgba(abs.$dark, 0.6);
+  }
+
+  .destination-media {
+    position: relative;
+    aspect-ratio: 4 / 5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: linear-gradient(135deg, abs.$primary, abs.$primary-dark);
+
+    img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    &::after {
+      @include abs.pseudo-base(1);
+      inset: auto 0 0 0;
+      height: 40%;
+      background: linear-gradient(to top, rgba(abs.$dark, 0.45), transparent);
+    }
+
+    .tag {
+      position: absolute;
+      left: 0.9rem;
+      bottom: 0.9rem;
+      z-index: 2;
+      margin: 0;
+    }
+  }
+
+  .destination-media.media-plage    { background: linear-gradient(135deg, #21A0AB, abs.$primary); }
+  .destination-media.media-ville    { background: linear-gradient(135deg, abs.$secondary, #D9633C); }
+  .destination-media.media-montagne { background: linear-gradient(135deg, #35576A, abs.$dark); }
+  .destination-media.media-nature   { background: linear-gradient(135deg, #38B98A, #1F8C63); }
+
+  .destination-body {
+    padding: 1.4rem 1.5rem 1.7rem 1.5rem;
+  }
+
+  .destination-name {
+    @include abs.title-style(1.4rem, abs.$text, left);
+    margin-bottom: 0.2rem;
+  }
+
+  .destination-country {
+    @include abs.text-style(0.9rem, abs.$font-family-sans-serif, abs.$muted, left);
+    margin-bottom: 0.9rem;
+
+    i {
+      color: abs.$secondary;
+      margin-right: 0.3rem;
+    }
+  }
+
+  .destination-text {
+    @include abs.text-style(0.95rem, abs.$font-family-sans-serif, abs.$text, left);
+    line-height: 1.6;
+  }
+}
+
+.tag {
+  display: inline-block;
+  padding: 0.25rem 0.8rem;
+  border-radius: 1rem;
+  @include abs.text-style(0.8rem, abs.$font-family-sans-serif, white, center);
+  font-weight: 600;
+  box-shadow: 0 4px 10px rgba(abs.$dark, 0.25);
+}
+
+.tag-plage    { background: abs.$primary; }
+.tag-ville    { background: abs.$secondary; }
+.tag-montagne { background: #3E5A70; }
+.tag-nature   { background: abs.$success; }
+
+
+.fav-btn {
+  position: absolute;
+  top: 0.8rem;
+  right: 0.8rem;
+  z-index: 2;
+  width: 2.4rem;
+  height: 2.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 50%;
+  cursor: pointer;
+  background: rgba(white, 0.9);
+  color: abs.$muted;
+  font-size: 1.05rem;
+  box-shadow: 0 4px 12px rgba(abs.$dark, 0.2);
+  @include abs.anim-transition(transform);
+
+  &:hover {
+    transform: scale(1.12);
+    color: abs.$secondary;
+  }
+
+  &.is-active {
+    color: abs.$secondary;
+  }
+}
+
+
+.select-btn {
+  position: absolute;
+  top: 0.8rem;
+  left: 0.8rem;
+  z-index: 2;
+  width: 2.4rem;
+  height: 2.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 50%;
+  cursor: pointer;
+  background: rgba(white, 0.9);
+  color: abs.$muted;
+  font-size: 1.05rem;
+  box-shadow: 0 4px 12px rgba(abs.$dark, 0.2);
+  @include abs.anim-transition(transform);
+
+  &:hover {
+    transform: scale(1.12);
+    color: abs.$primary;
+  }
+
+  &.is-active {
+    color: abs.$primary;
+  }
+}

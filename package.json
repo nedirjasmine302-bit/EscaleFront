@@ -4,25 +4,23 @@
   "description": "Application dynamique Escale (front qui consomme l'API des voyages) - Dossier Professionnel.",
   "main": "index.js",
   "type": "commonjs",
-
   "scripts": {
     "build": "sass scss/main.scss assets/css/main.css",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "test": "vitest run --passWithNoTests"
   },
-
   "keywords": [],
   "author": "",
   "license": "ISC",
-
   "dependencies": {
     "bootstrap": "^5.3.8",
     "bootstrap-icons": "^1.13.1"
   },
-
   "devDependencies": {
     "@eslint/js": "^10.0.1",
     "eslint": "^10.2.1",
     "globals": "^17.5.0",
-    "sass": "^1.77.0"
+    "sass": "^1.77.0",
+    "vitest": "^1.6.1"
   }
 }

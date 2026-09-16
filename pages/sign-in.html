@@ -1,0 +1,26 @@
+<!-- Section: Sign in -->
+<section class="auth-page">
+  <div class="auth-card scale-in">
+    <span class="auth-eyebrow"><i class="bi bi-shield-lock"></i> Espace membre</span>
+    <h2 class="auth-title">Connexion</h2>
+    <p class="auth-intro">Connectez-vous pour retrouver vos favoris et suivre vos demandes.</p>
+
+    <form id="login-form" novalidate>
+      <div class="field">
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="vous@exemple.com" autocomplete="username">
+      </div>
+
+      <div class="field">
+        <label for="password">Mot de passe</label>
+        <input type="password" id="password" placeholder="Votre mot de passe" autocomplete="current-password">
+      </div>
+
+      <p class="form-feedback" id="auth-feedback"></p>
+
+      <button type="submit" class="btn btn-primary" id="login-btn">Se connecter</button>
+    </form>
+
+    <p class="auth-switch"><a href="/forgot-password">Mot de passe oublié ?</a></p>
+  </div>
+</section>
