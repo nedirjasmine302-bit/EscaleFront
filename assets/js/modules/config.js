@@ -5,4 +5,4 @@ const isLocal = host === "localhost" || host === "127.0.0.1";
 
 export const API_BASE = isLocal
   ? "http://localhost:8000"
-  : "https://mon-api-escale.up.railway.app";
+  : "https://escaleback-production.up.railway.app";
